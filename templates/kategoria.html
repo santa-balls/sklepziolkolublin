@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ nazwa }} - sklep ziołowy Lublin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+    🌿 Naturalne zioła – odbiór osobisty Lublin
+</header>
+
+<header class="main-header">
+    <div class="logo">zioła.shop</div>
+</header>
+
+<div class="container">
+
+    <aside class="sidebar">
+        <h3>Kategorie</h3>
+        <ul>
+            <li onclick="location.href='/kategoria/zioła'">Zioła</li>
+            <li onclick="location.href='/kategoria/kwiaty'">Kwiaty</li>
+        </ul>
+    </aside>
+
+    <main class="content">
+        <h2>{{ nazwa }}</h2>
+
+        <div class="produkty-grid">
+        {% for produkt in produkty %}
+            <div class="produkt-karta">
+                <img src="{{ url_for('static', filename='images/' + produkt.obraz) }}" alt="{{ produkt.nazwa }}">
+                <h3>{{ produkt.nazwa }}</h3>
+                <p>{{ produkt.opis }}</p>
+            </div>
+        {% endfor %}
+        </div>
+
+        <p class="payment">
+            Płatność do ręki – odbiór tylko Lublin<br>
+            kontakt: sklepziolkolublin@gmail.com
+        </p>
+    </main>
+
+</div>
+
+</body>
+</html>
